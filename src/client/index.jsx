@@ -1,20 +1,28 @@
-import React from 'react';
 import ReactDOM from 'react-dom';
+import React from 'react'
 
 import tweets from 'tweets'
 import Tweet from 'Tweet'
+import Nav from 'Nav';
 
 class App extends React.Component {
   render() {
-
     const listOfItems = tweets.tweets;
-    const items = listOfItems.map((item)=>{
+    const list = listOfItems.map((item)=>{
         return(
-            <li><Tweet tweet={item} /></li>)
-    })
+            <li>
+            <Tweet tweet={item} />
+            <p> {item.text}</p>
+            <p>Favourites{item.favourites_count}</p>
+            <p>Retweets{item.retweet_count}</p>
+             </li>)
+
+            })
+
     return (
       <div>
-        <ul>{items}</ul>
+        <Nav />
+        <ul>{list}</ul>
       </div>
     );
   }
@@ -22,4 +30,4 @@ class App extends React.Component {
 
 const element = document.getElementById('app');
 
-ReactDOM.render(<App />, element );//
+ReactDOM.render(<App />, element );
