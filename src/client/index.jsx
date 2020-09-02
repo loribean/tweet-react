@@ -2,27 +2,21 @@ import ReactDOM from 'react-dom';
 import React from 'react'
 
 import tweets from 'tweets'
-import Tweet from 'Tweet'
+import TweetTimeLine from 'TweetTimeLine'
 import Nav from 'Nav';
+import Header from 'Header'
 
 class App extends React.Component {
   render() {
-    const listOfItems = tweets.tweets;
-    const list = listOfItems.map((item)=>{
-        return(
-            <li>
-            <Tweet tweet={item} />
-            <p> {item.text}</p>
-            <p>Favourites{item.favourites_count}</p>
-            <p>Retweets{item.retweet_count}</p>
-             </li>)
-
-            })
 
     return (
       <div>
+
+        <Header name={tweets.tweets[0].user.name} />
         <Nav />
-        <ul>{list}</ul>
+        <TweetTimeLine tweets={tweets.tweets} />
+
+
       </div>
     );
   }
